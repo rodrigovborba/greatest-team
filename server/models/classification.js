@@ -3,15 +3,19 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  
   singles: [
-    { type : mongoose.Schema.Types.ObjectId, ref: 'SingleClassification' }
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'SingleClassification'
+    }
   ],
   league: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'League'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'League'
   },
   season: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Season'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Season'
   }
 });
 
