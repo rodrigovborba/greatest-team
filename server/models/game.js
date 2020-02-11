@@ -1,66 +1,72 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   league: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "League"
+    ref: 'League'
   },
   round: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Round"
+    ref: 'Round'
   },
   home: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team"
+    ref: 'Team'
   },
   away: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team"
+    ref: 'Team'
   },
   homeScore: {
-    type: Number
+    type: Number,
+    min: 0
   },
   awayScore: {
-    type: Number
+    type: Number,
+    min: 0
   },
-  homeShoots: [
+  homeShots: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Action"
+      ref: 'Action'
     }
   ],
-  awayShoots: [
+  awayShots: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Action"
+      ref: 'Action'
     }
   ],
   homeStops: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Action"
+      ref: 'Action'
     }
   ],
   awayStops: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Action"
+      ref: 'Action'
     }
   ],
   homeMomentum: {
-    type: Number
+    type: Number,
+    min: -100,
+    max: 100
   },
   awayMomentum: {
-    type: Number
+    type: Number,
+    min: -100,
+    max: 100
   },
   momentumActions: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Action"
+      ref: 'Action'
     }
   ]
 });
 
-module.exports = mongoose.model("Game", schema);
+module.exports = mongoose.model('Game', schema);

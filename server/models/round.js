@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    require: true
+    required: true
   },
   season: {
     type: mongoose.Schema.Types.ObjectId,
