@@ -23,32 +23,42 @@ const schema = new mongoose.Schema({
   },
   shoot: {
     type: Number,
+    default: 1,
     min: 1,
     max: 99
   },
   dribble: {
     type: Number,
+    default: 1,
     min: 1,
     max: 99
   },
   tackle: {
     type: Number,
+    default: 1,
     min: 1,
     max: 99
   },
   save: {
     type: Number,
+    default: 1,
     min: 1,
     max: 99
   },
   xp: {
-    type: Number
+    type: Number,
+    min: 0,
+    default: 0
   },
   goals: {
-    type: Number
+    type: Number,
+    min: 0,
+    default: 0
   },
   saves: {
-    type: Number
+    type: Number,
+    min: 0,
+    default: 0
   }
 });
 
