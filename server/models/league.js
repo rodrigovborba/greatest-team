@@ -7,24 +7,35 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  seasons: [
-    { type : mongoose.Schema.Types.ObjectId, ref: 'Season' }
-  ],
   description: {
     type: String,
     trim: true
   },
+  seasons: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Season'
+    }
+  ],
   teams: [
-    { type : mongoose.Schema.Types.ObjectId, ref: 'Team' }
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Team'
+    }
   ],
   classifications: [
-    { type : mongoose.Schema.Types.ObjectId, ref: 'Classification' }
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Classification'
+    }
   ],
   country: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Country'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Country'
   },
   continent: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Continent'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Continent'
   }
 });
 
