@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   points: {
@@ -10,11 +10,11 @@ const schema = new mongoose.Schema({
   },
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team"
+    ref: 'Team'
   },
   classification: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Classification"
+    ref: 'Classification'
   },
   played: {
     type: Number,
@@ -36,16 +36,16 @@ const schema = new mongoose.Schema({
     default: 0,
     min: 0
   },
-  goalAgainst: {
+  goalsAgainst: {
     type: Number,
     default: 0,
     min: 0
   },
-  goalFor: {
+  goalsFor: {
     type: Number,
     default: 0,
     min: 0
   }
 });
 
-module.exports = mongoose.model("SingleClassification", schema);
+module.exports = mongoose.model('SingleClassification', schema);
