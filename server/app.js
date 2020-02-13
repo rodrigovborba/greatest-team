@@ -15,7 +15,13 @@ const passportConfigure = require('./passport-configuration.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 
+const cron = require('node-cron');
+
 const app = express();
+
+cron.schedule('* * * * *', () => {
+  console.log('running a task every minute');
+});
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -36,7 +42,8 @@ app.use(
       mongooseConnection: mongoose.connection,
       ttl: 60 * 60 * 24
     })
-  }));
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bindUserToViewLocals);

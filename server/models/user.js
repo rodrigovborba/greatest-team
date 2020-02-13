@@ -39,7 +39,7 @@ const schema = new mongoose.Schema({
     min: 1,
     max: 99
   },
-  save: {
+  stop: {
     type: Number,
     default: 1,
     min: 1,
@@ -55,7 +55,7 @@ const schema = new mongoose.Schema({
     min: 0,
     default: 0
   },
-  saves: {
+  stops: {
     type: Number,
     min: 0,
     default: 0

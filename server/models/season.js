@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    require: true
+    required: true
   },
   rounds: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Round"
+      ref: 'Round'
     }
   ],
   games: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Game"
+      ref: 'Game'
     }
   ]
 });
 
-module.exports = mongoose.model("Season", schema);
+module.exports = mongoose.model('Season', schema);

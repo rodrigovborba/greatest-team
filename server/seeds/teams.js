@@ -44,6 +44,7 @@ mongoose
   })
   .then(teams => {
     console.log('Team seeds planted!', teams);
+    // Only returns when all the promises are resolved
     return Promise.all(
       teams.map(team => {
         return League.pushTeamToLeague(team.code, team.division, team._id);
