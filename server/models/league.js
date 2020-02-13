@@ -8,6 +8,10 @@ const schema = new mongoose.Schema({
     trim: true,
     required: true
   },
+  code: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     trim: true
