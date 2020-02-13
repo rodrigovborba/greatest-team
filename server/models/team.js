@@ -3,6 +3,24 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
+  code: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String
+  },
+  division: {
+    type: Number,
+    required: true
+  },
+  emblem: {
+    type: String
+  },
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -12,16 +30,6 @@ const schema = new mongoose.Schema({
   league: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'League'
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String
-  },
-  emblem: {
-    type: String
   }
 });
 
