@@ -53,30 +53,22 @@ const schema = new mongoose.Schema({
   }
 });
 
-schema.statics.pushTeamsToLeague = async function(teams) {
+schema.statics.pushTeamToLeague = async function(code, division, team_id) {
   const League = this;
-  console.log('TEAM CODE', teams[0].code);
-  for (let i = 0; i < teams.length; i++) {
+  try {
     const league = await League.findOne({
-      code: teams[i].code,
-      division: teams[i].division
+      code: code,
+      division: division
     }).exec();
-    console.log('LIGA', league);
     if (league) {
-      league.teams.push(teams[i]._id);
-      league.save();
+      await league.teams.push(team_id);
+      await league.save();
+      return league;
     }
+    throw error("There's no league with that search");
+  } catch (error) {
+    throw error('Error => [Model: League | Static: pushTeamToLeague]');
   }
-  // try {
-  //   if (league) {
-  //     console.log(league);
-  //     // league.teams.push(team_id);
-  //     return league;
-  //   }
-  //   throw error("There's no league with that code and division");
-  // } catch (error) {
-  //   throw error('Error => [Model: League | Static: pushTeamToLeague]');
-  // }
 };
 
 module.exports = mongoose.model('League', schema);

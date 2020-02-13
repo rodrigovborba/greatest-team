@@ -42,7 +42,6 @@ mongoose
     return League.insertMany(leaguesSeeds);
   })
   .then(leagues => {
-    console.log(leagues);
     console.log('Leagues seeds planted!');
     mongoose.connection.close();
   })

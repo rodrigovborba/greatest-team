@@ -43,11 +43,15 @@ mongoose
     return Team.insertMany(teamsSeeds);
   })
   .then(teams => {
-    console.log('Team seeds planted!');
-    return League.pushTeamsToLeague(teams);
+    console.log('Team seeds planted!', teams);
+    return Promise.all(
+      teams.map(team => {
+        return League.pushTeamToLeague(team.code, team.division, team._id);
+      })
+    );
   })
-  .then(result => {
-    console.log(result);
+  .then(promises => {
+    console.log('promises', promises);
     mongoose.connection.close();
   })
   .catch(error => {
