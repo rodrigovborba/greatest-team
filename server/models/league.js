@@ -5,11 +5,20 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   description: {
     type: String,
     trim: true
+  },
+  emblem: {
+    type: String,
+    required: true
+  },
+  division: {
+    type: Number,
+    required: true
   },
   seasons: [
     {
@@ -20,6 +29,7 @@ const schema = new mongoose.Schema({
   teams: [
     {
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
       ref: 'Team'
     }
   ],

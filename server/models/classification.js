@@ -11,6 +11,7 @@ const schema = new mongoose.Schema({
   ],
   league: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
     ref: 'League'
   },
   season: {
