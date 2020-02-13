@@ -49,4 +49,30 @@ const schema = new mongoose.Schema({
   }
 });
 
+schema.statics.pushTeamsToLeague = async function(teams) {
+  const League = this;
+  console.log('TEAM CODE', teams[0].code);
+  for (let i = 0; i < teams.length; i++) {
+    const league = await League.findOne({
+      code: teams[i].code,
+      division: teams[i].division
+    }).exec();
+    console.log('LIGA', league);
+    if (league) {
+      league.teams.push(teams[i]._id);
+      league.save();
+    }
+  }
+  // try {
+  //   if (league) {
+  //     console.log(league);
+  //     // league.teams.push(team_id);
+  //     return league;
+  //   }
+  //   throw error("There's no league with that code and division");
+  // } catch (error) {
+  //   throw error('Error => [Model: League | Static: pushTeamToLeague]');
+  // }
+};
+
 module.exports = mongoose.model('League', schema);

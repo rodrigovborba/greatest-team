@@ -1,30 +1,31 @@
-const leaguesSeeds = [
+const teamsSeeds = [
   {
-    name: 'Liga Portuguesa',
+    name: 'Sport Lisboa e Benfica',
     description: 'Liga Portuguesa de Futebol',
     code: 'PT',
     division: '1',
     emblem:
-      'https://upload.wikimedia.org/wikipedia/commons/0/0e/Liga_NOS_logo.png'
+      'https://upload.wikimedia.org/wikipedia/pt/f/f0/500px-SL_Benfica_logo_svg.png'
   },
   {
-    name: 'Liga Espanhola',
-    description: 'Liga Espanhola de Futebol',
-    code: 'ES',
+    name: 'Futebol Clube do Porto',
+    description: 'Liga Portuguesa de Futebol',
+    code: 'PT',
     division: '1',
     emblem:
       'https://www.zerozero.pt/img/logos/competicoes/5_imgbank_d1_20150421164611.png'
   },
   {
-    name: 'Brasileirão',
+    name: 'Sport Club do Recife',
     description: 'Liga Brasileira de Futebol',
     code: 'BR',
     division: '1',
     emblem:
-      'https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_S%C3%A9rie_A_logo.png'
+      'https://banner2.cleanpng.com/20180531/kpr/kisspng-sport-club-do-recife-campeonato-brasileiro-srie-5b10a7b6c0db24.12836435152781816679.jpg'
   }
 ];
 
+const Team = require('./../models/team');
 const League = require('./../models/league');
 
 require('dotenv').config();
@@ -39,11 +40,14 @@ mongoose
   })
   .then(() => {
     console.log('Mongoose connection established.');
-    return League.insertMany(leaguesSeeds);
+    return Team.insertMany(teamsSeeds);
   })
-  .then(leagues => {
-    console.log(leagues);
-    console.log('Leagues seeds planted!');
+  .then(teams => {
+    console.log('Team seeds planted!');
+    return League.pushTeamsToLeague(teams);
+  })
+  .then(result => {
+    console.log(result);
     mongoose.connection.close();
   })
   .catch(error => {
